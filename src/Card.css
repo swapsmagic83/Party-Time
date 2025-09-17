@@ -1,0 +1,81 @@
+.Card-h1{
+    color: blue;
+   padding: 50px;
+}
+.editor-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* align items at the top */
+  }
+.Card-form-container{
+    /* position: absolute; */
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
+    height: 400px;
+    padding: 10px;
+    margin: 100px;
+}
+.CardsList-image {
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+}
+.Card-container{
+    position: relative;
+    display: inline;
+}
+.heading-overlay-text{
+    /* color: blue; */
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.Card-image{
+    /* position: absolute;
+    left: 100px;
+    top: 50px; */
+    padding: 50px;
+    height: 600px;
+    width: 500px;
+    
+}
+.overlay-text {
+    /* color: white; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: bold;
+    /* text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); makes text readable */
+} 
+.Card-edit-form{
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+}
+.Form{
+    /* border: 1px solid red; */
+    padding: 15px;
+}
+.Button{
+    background-color: gray;
+    border-radius: 5px;
+    font: bold;
+   margin: 40px;
+}
+.NavBar-NavLink{
+    padding: 100px;
+    color: white;
+    font-size: x-large;
+    text-decoration: none;
+}
+.Navbar-container{
+    margin-top: 10px;
+    padding: 20px;
+    background-color: darkolivegreen;
+}
