@@ -5,6 +5,7 @@ import DateForm from "./DateForm";
 import AddressForm from "./AddressForm";
 import InfoForm from "./InfoForm";
 import ResultCard from "./ResultCard";
+import HostDetails from "./HostDetails";
 
 
 const Card = ({selectedCard}) =>{
@@ -18,11 +19,13 @@ const Card = ({selectedCard}) =>{
     const [addressColor,setAddressColor] = useState('black')
     const [showCard,setShowCard] = useState(false)
     const [showEditForm, setShowEditForm] = useState(true)
+    const [showHostForm,setShowHostForm] = useState(false)
     
     const handleDone = (e) =>{
         e.preventDefault()
         setShowCard(true)
         setShowEditForm(false)
+        setShowHostForm(true)
     }
 
     const handleBack = () =>{
@@ -68,6 +71,7 @@ const Card = ({selectedCard}) =>{
                 info={info} infoColor={infoColor}
                 address={address} addressColor={addressColor} 
                 handleBack={handleBack}/>
+                <HostDetails />
                 </div>}
         </div>
     )

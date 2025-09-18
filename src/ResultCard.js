@@ -13,7 +13,8 @@ const ResultCard = ({selectedCard,heading,headingColor,date,dateColor,info,infoC
                    <h4 style={{color:dateColor}}>{date}</h4>
                    <h4 style={{color:addressColor}}>{address}</h4></div>   
                </div>
-               <button onClick={handleBack}>Edit Card</button>
+               <button  onClick={handleBack}>Edit Card</button>
+               {/* <button >NEXT</button> */}
         </div>
     )
 }
