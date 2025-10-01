@@ -1,78 +1,91 @@
 import React, { useState} from "react";
 import './Card.css'
-import HeadingForm from "./HeadingForm";
-import DateForm from "./DateForm";
-import AddressForm from "./AddressForm";
-import InfoForm from "./InfoForm";
+
 import ResultCard from "./ResultCard";
 import HostDetails from "./HostDetails";
-
+import ShareInvite from "./ShareInvite";
+import EventForm from "./EventForm";
 
 const Card = ({selectedCard}) =>{
-    const [date,setDate] = useState('')
-    const [address, setAddress] = useState('')
-    const [info,setInfo] = useState('')
-    const [infoColor,setInfoColor] = useState('black')
-    const [heading,setHeading] = useState('')
-    const [headingColor, setHeadingColor] = useState('black')
-    const [dateColor,setDateColor] = useState('black')
-    const [addressColor,setAddressColor] = useState('black')
-    const [showCard,setShowCard] = useState(false)
-    const [showEditForm, setShowEditForm] = useState(true)
-    const [showHostForm,setShowHostForm] = useState(false)
+   
+    const [cardData,setCardData] = useState({
+        heading:'',
+        headingColor:'#000000',
+        date:'',
+        dateColor:'#000000',
+        info:'',
+        infoColor:'#000000',
+        address:'',
+        addressColor:'#000000'
+    })
+
+    const [stage,setStage] = useState('editForm')
+    // const [showCard,setShowCard] = useState(false)
+    const [hostDetails,setHostDetails] = useState(null)
+    
     
     const handleDone = (e) =>{
         e.preventDefault()
-        setShowCard(true)
-        setShowEditForm(false)
-        setShowHostForm(true)
+        // setShowCard(true)
+        
     }
 
-    const handleBack = () =>{
-        setShowEditForm(true)
-        setShowCard(false)
+    // const handleBack = () =>{
+    //     setStage('editForm')
+        
+    // }
 
-    }
     return (
 
         <div className="editor-container">
             
-            {selectedCard && showCard===false &&(
+            {selectedCard && (
             <div className="Card-container">
                
             <img className="Card-image" src={selectedCard}></img>
             <div className="heading-overlay-text">
-            <h3 style={{color:headingColor}}>{heading}</h3>    
+            <h3 style={{color:cardData.headingColor}}>{cardData.heading}</h3>    
             </div>
             <div className="overlay-text">
 
-                <h4 style={{color:infoColor}}>{info}</h4>
-                <h4 style={{color:dateColor}}>{date}</h4>
-                <h4 style={{color:addressColor}}>{address}</h4></div>
+                <h4 style={{color:cardData.infoColor}}>{cardData.info}</h4>
+                <h4 style={{color:cardData.dateColor}}>{cardData.date}</h4>
+                <h4 style={{color:cardData.addressColor}}>{cardData.address}</h4></div>
                 
             </div>)}
-            {showEditForm &&
-            <div className="Card-form-container">
+
+            {stage === 'editForm' && selectedCard &&
+                (<EventForm 
+                selectedCard={selectedCard}
+                cardData={cardData}
+                setCardData={setCardData}
+                handleDone={()=>setStage('preview')}
+                />)}
+
+            {stage === "preview" && (
+                  <div className>
+                    <button onClick={() => setStage("editForm")}>Edit</button>
+                    <button onClick={() => setStage("hostForm")}>Add Host Info</button>
+                 </div>
+                )}
+
+            {stage ==='hostForm' &&
+                (<HostDetails 
+                handleBack={()=> setStage('editForm')}
+                onHostSubmit={(details)=> {
+                setHostDetails(details)
+                setStage('guest')
+                }}
+                />)}
+
             
-            <form onSubmit={handleDone} className="Card-Edit-form">
-               
-                <HeadingForm heading={heading} setHeading={setHeading} headingColor={headingColor} setHeadingColor={setHeadingColor}/>
-                <InfoForm info={info} setInfo={setInfo} infoColor={infoColor} setInfoColor={setInfoColor}/>
-                <DateForm date={date} setDate={setDate} dateColor={dateColor} setDateColor={setDateColor} />
-                <AddressForm address={address} setAddress={setAddress} addressColor={addressColor} setAddressColor={setAddressColor}/>
-               {date && address&&( <button className="Button">Done</button>)}
-            </form>
-            </div>}
-            {showCard &&
-            <div>
-                <ResultCard selectedCard={selectedCard}
-                heading={heading} headingColor={headingColor}
-                date={date} dateColor={dateColor}
-                info={info} infoColor={infoColor}
-                address={address} addressColor={addressColor} 
-                handleBack={handleBack}/>
-                <HostDetails />
-                </div>}
+            {stage === 'guest' && hostDetails &&
+                (<ShareInvite 
+                hostName={hostDetails.hostName}
+                hostPhone={hostDetails.hostPhone}
+                hostEmail={hostDetails.hostEmail}
+                hostAddress={hostDetails.hostAddress}
+                eventUrl="https://github.com/swapsmagic83/Party-Time"/> )}
         </div>
     )
 }
