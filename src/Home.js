@@ -12,7 +12,7 @@ const Home = () =>{
         
         <Routes>
           <Route path="/" element={<h1 className="Card-h1">Invite people to the event!!!</h1>}></Route>
-          <Route path='/birthday' element={<BirthdayCardsList setSelectedCard={setSelectedCard} setEvent={setEvent}/>}></Route>
+          <Route path='/birthday' element={<BirthdayCardsList setSelectedCard={setSelectedCard} />}></Route>
           <Route path='/edit' element={<Card selectedCard={selectedCard} />}></Route>
           <Route path='/graduation' element={<GraduationCardsList setSelectedCard={setSelectedCard}/>}></Route>
           <Route path='/halloween' element={<HalloweenCardsList setSelectedCard={setSelectedCard}/>}></Route>
