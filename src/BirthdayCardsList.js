@@ -27,7 +27,7 @@ const BirthdayCardsList = ({setSelectedCard}) =>{
             <h1 className="Card-h1">Birthday Cards:</h1>
             <div>
                 {birthdayCards.map(card=>(
-                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)}></img>
+                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)} alt="Birthday party invitation Card"></img>
                 ))}
             </div>
         </div>

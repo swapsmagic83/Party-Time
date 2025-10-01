@@ -27,7 +27,7 @@ const Card = ({selectedCard}) =>{
             {selectedCard && (
             <div className="Card-container">
                
-            <img className="Card-image" src={selectedCard}></img>
+            <img className="Card-image" src={selectedCard} alt="Invitation Card"></img>
             <div className="heading-overlay-text">
             <h3 style={{color:cardData.headingColor}}>{cardData.heading}</h3>    
             </div>

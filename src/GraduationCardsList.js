@@ -23,7 +23,7 @@ const GraduationCardsList = ({setSelectedCard}) =>{
         <h1 className="Card-h1">Graduation Cards:</h1>
             <div>
                 {graduationCards.map(card=>(
-                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)}></img>
+                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)} alt="Graduation party invitation Card"></img>
                 ))}
             </div>
         </>

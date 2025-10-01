@@ -19,7 +19,7 @@ const HalloweenCardsList = ({setSelectedCard}) =>{
         <h1 className="Card-h1">Halloween Cards:</h1>
             <div>
                 {halloweenCards.map(card=>(
-                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)}></img>
+                    <img className="CardsList-image" src={card} onClick={()=>handleClick(card)} alt="Halloween party invitation Card"></img>
                 ))}
             </div>
         </>
