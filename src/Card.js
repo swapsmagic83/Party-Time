@@ -70,7 +70,7 @@ const Card = ({selectedCard}) =>{
                 hostPhone={hostDetails.hostPhone}
                 hostEmail={hostDetails.hostEmail}
                 hostAddress={hostDetails.hostAddress}
-                eventUrl="https://github.com/swapsmagic83/Party-Time"/> )}
+                eventUrl="https://party-time-react.netlify.app/"/> )}
         </div>
     )
 }
