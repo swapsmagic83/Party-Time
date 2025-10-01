@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './Card.css'
 
-const EventForm = ({selectedCard,cardData,setCardData,handleDone}) =>{
+const EventForm = ({cardData,setCardData,handleDone}) =>{
     const handleChange = (e) =>{
         const {name,value} = e.target;
         setCardData((prev)=>({

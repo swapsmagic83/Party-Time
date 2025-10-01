@@ -1,6 +1,4 @@
 import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
 import { BrowserRouter  } from 'react-router-dom';
 import NavBar from './NavBar';
 

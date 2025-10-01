@@ -1,14 +1,11 @@
 import React, {useState} from "react";
 import './Card.css'
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
 
 
 
 const BirthdayCardsList = ({setSelectedCard}) =>{
     const navigate = useNavigate()
-    // setEvent('birthday')
-    // const [event,setEvent] = useState('Birthday Party')
     const birthdayCards = ["https://plus.unsplash.com/premium_photo-1663839412063-fd24ec7d2e10?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                         "https://images.unsplash.com/photo-1555607124-8531c7c702d0?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                         "https://images.unsplash.com/photo-1553135422-400ee5852b27?q=80&w=761&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

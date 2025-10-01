@@ -6,10 +6,10 @@ import Card from './Card';
 import HalloweenCardsList from "./HalloweenCardsList";
 const Home = () =>{
     const [selectedCard, setSelectedCard] = useState('')
-    const [event,setEvent] = useState('')
+    
     return (
         <>
-         {/* <Router> */}
+        
         <Routes>
           <Route path="/" element={<h1 className="Card-h1">Invite people to the event!!!</h1>}></Route>
           <Route path='/birthday' element={<BirthdayCardsList setSelectedCard={setSelectedCard} setEvent={setEvent}/>}></Route>
@@ -17,7 +17,7 @@ const Home = () =>{
           <Route path='/graduation' element={<GraduationCardsList setSelectedCard={setSelectedCard}/>}></Route>
           <Route path='/halloween' element={<HalloweenCardsList setSelectedCard={setSelectedCard}/>}></Route>
         </Routes>
-      {/* </Router> */}
+      
         
         </>
     )

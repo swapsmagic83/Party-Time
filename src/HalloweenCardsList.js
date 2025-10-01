@@ -1,7 +1,7 @@
 import React from "react";
 import './Card.css'
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
+
 
 const HalloweenCardsList = ({setSelectedCard}) =>{
     const navigate = useNavigate()

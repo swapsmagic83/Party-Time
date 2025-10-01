@@ -36,19 +36,6 @@ const ShareInvite = ({hostName, eventUrl}) =>{
             })
             })
         }
-        // emailjs
-        //     .send(
-        //         "service_rratg8g",
-        //         "template_2ho7mvb",
-        //         templeParams,
-        //         "QNkPqoBDCmMOzz3R9"
-        //     )
-        //     .then((res)=>{
-        //         console.log("Success")
-        //     })
-        //     .catch((err)=>{
-        //         console.log(err)
-        //     })
     }
     
  return(

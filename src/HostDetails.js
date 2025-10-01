@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import ShareInvite from "./ShareInvite";
 
-const HostDetails = ({handleBack, onHostSubmit,selectedCard}) =>{
+const HostDetails = ({handleBack, onHostSubmit}) =>{
     const [hostName,setHostName] = useState('')
     const [hostPhone,setHostPhone] = useState('')
     const [hostEmail,setHostEmail] =useState('')
     const [hostAddress, setHostAddress] =useState('')
-    // const em = 'rathod.kruti@gmail.com'
 
     const handleSubmit = (e) =>{
         e.preventDefault()

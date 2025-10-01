@@ -1,7 +1,5 @@
 import React, { useState} from "react";
 import './Card.css'
-
-import ResultCard from "./ResultCard";
 import HostDetails from "./HostDetails";
 import ShareInvite from "./ShareInvite";
 import EventForm from "./EventForm";
@@ -20,20 +18,7 @@ const Card = ({selectedCard}) =>{
     })
 
     const [stage,setStage] = useState('editForm')
-    // const [showCard,setShowCard] = useState(false)
     const [hostDetails,setHostDetails] = useState(null)
-    
-    
-    const handleDone = (e) =>{
-        e.preventDefault()
-        // setShowCard(true)
-        
-    }
-
-    // const handleBack = () =>{
-    //     setStage('editForm')
-        
-    // }
 
     return (
 
