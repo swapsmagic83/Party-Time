@@ -14,7 +14,7 @@ const ResultCard = () =>{
     const address = params.get("address");
     const addressColor = params.get("addressColor") || "#000000"
     const host = params.get("host");
-    const card = params.get("card"); 
+    const card = decodeURIComponent(params.get("card") ||""); 
     return (
         <div className="editor-container">
             <div className="Card-container">

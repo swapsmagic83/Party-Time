@@ -22,8 +22,8 @@ const Card = ({selectedCard}) =>{
 
     const generateEventLink = () => {
         const eventData = {...cardData,
-             card:encodeURIComponent(selectedCard), 
-             host: hostDetails.hostName}
+             card:selectedCard, 
+             host: hostDetails?.hostName || ""}
         const queryString = new URLSearchParams(eventData).toString()
         return `https://party-time-react.netlify.app/view?${queryString}`
     }
