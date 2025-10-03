@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import { BrowserRouter  } from 'react-router-dom';
 import NavBar from './NavBar';
+import Home from './Home';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <NavBar />   
+      <Home />
       </BrowserRouter>
       
     </div>

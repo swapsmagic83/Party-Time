@@ -20,6 +20,14 @@ const Card = ({selectedCard}) =>{
     const [stage,setStage] = useState('editForm')
     const [hostDetails,setHostDetails] = useState(null)
 
+    const generateEventLink = () => {
+        const eventData = {...cardData,
+             card:encodeURIComponent(selectedCard), 
+             host: hostDetails.hostName}
+        const queryString = new URLSearchParams(eventData).toString()
+        return `https://party-time-react.netlify.app/view?${queryString}`
+    }
+
     return (
 
         <div className="editor-container">
@@ -70,7 +78,7 @@ const Card = ({selectedCard}) =>{
                 hostPhone={hostDetails.hostPhone}
                 hostEmail={hostDetails.hostEmail}
                 hostAddress={hostDetails.hostAddress}
-                eventUrl="https://party-time-react.netlify.app/"/> )}
+                eventUrl={generateEventLink()}/> )}
         </div>
     )
 }

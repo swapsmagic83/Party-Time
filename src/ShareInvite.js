@@ -11,12 +11,12 @@ const ShareInvite = ({hostName, eventUrl}) =>{
             setNewEmail('')
         }
     }
-
+console.log('link',eventUrl)
     const sendInvites = (e) =>{
         e.preventDefault()
         if(guestEmails.length > 0){
             guestEmails.forEach(email => {
-                const templeParams = {
+                const templateParams = {
                     to_email: email,
                     host_name:hostName,
                     eventUrl:eventUrl
@@ -25,7 +25,7 @@ const ShareInvite = ({hostName, eventUrl}) =>{
             .send(
                 "service_rratg8g",
                 "template_2ho7mvb",
-                templeParams,
+                templateParams,
                 "QNkPqoBDCmMOzz3R9"
             )
             .then((res)=>{

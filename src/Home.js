@@ -4,6 +4,7 @@ import BirthdayCardsList from "./BirthdayCardsList";
 import GraduationCardsList from "./GraduationCardsList";
 import Card from './Card';
 import HalloweenCardsList from "./HalloweenCardsList";
+import ResultCard from "./ResultCard";
 const Home = () =>{
     const [selectedCard, setSelectedCard] = useState('')
     
@@ -16,6 +17,7 @@ const Home = () =>{
           <Route path='/edit' element={<Card selectedCard={selectedCard} />}></Route>
           <Route path='/graduation' element={<GraduationCardsList setSelectedCard={setSelectedCard}/>}></Route>
           <Route path='/halloween' element={<HalloweenCardsList setSelectedCard={setSelectedCard}/>}></Route>
+          <Route path="/view" element={<ResultCard />}></Route>
         </Routes>
       
         

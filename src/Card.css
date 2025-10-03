@@ -33,12 +33,12 @@
     transform: translate(-50%,-50%);
 }
 .Card-image{
-    /* position: absolute;
-    left: 100px;
-    top: 50px; */
+     /* position: absolute;  */
+    /* left: 100px;
+    top: 50px; */ 
     padding: 50px;
-    height: 600px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     
 }
 .overlay-text {
