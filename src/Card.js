@@ -21,10 +21,22 @@ const Card = ({selectedCard}) =>{
     const [hostDetails,setHostDetails] = useState(null)
 
     const generateEventLink = () => {
-        const eventData = {...cardData,
-             card:selectedCard, 
-             host: hostDetails?.hostName || ""}
-        const queryString = new URLSearchParams(eventData).toString()
+        if (!hostDetails) return;
+        const eventData = {
+             heading: encodeURIComponent(cardData.heading),
+             headingColor: encodeURIComponent(cardData.headingColor),
+             date: encodeURIComponent(cardData.date),
+             dateColor: encodeURIComponent(cardData.dateColor),
+             info: encodeURIComponent(cardData.info),
+             infoColor: encodeURIComponent(cardData.infoColor),
+             address: encodeURIComponent(cardData.address),
+             addressColor: encodeURIComponent(cardData.addressColor),   
+             card:encodeURIComponent(selectedCard), 
+             host: encodeURIComponent(hostDetails.hostName)}
+        const queryString = Object.keys(eventData)
+             .map(key => `${key}=${eventData[key]}`)
+             .join('&')
+        // const queryString = new URLSearchParams(eventData).toString()
         return `https://party-time-react.netlify.app/view?${queryString}`
     }
 

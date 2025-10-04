@@ -5,16 +5,16 @@ import './Card.css'
 const ResultCard = () =>{
     const {search} = useLocation()
     const params = new URLSearchParams(search)
-    const heading = params.get("heading")
-    const headingColor = params.get("headingColor") || "#000000"
-    const date = params.get("date");
-    const dateColor = params.get("dateColor") || "#000000"
-    const info = params.get("info");
-    const infoColor = params.get("infoColor") || "#000000"
-    const address = params.get("address");
-    const addressColor = params.get("addressColor") || "#000000"
-    const host = params.get("host");
-    const card = decodeURIComponent(params.get("card") ||""); 
+    const heading = decodeURIComponent(params.get("heading" || ""))
+    const headingColor = decodeURIComponent(params.get("headingColor") || "#000000")
+    const date = decodeURIComponent(params.get("date" || ""))
+    const dateColor = decodeURIComponent(params.get("dateColor") || "#000000")
+    const info = decodeURIComponent(params.get("info" || ""))
+    const infoColor = decodeURIComponent(params.get("infoColor") || "#000000")
+    const address = decodeURIComponent(params.get("address" || ""))
+    const addressColor = decodeURIComponent(params.get("addressColor") || "#000000")
+    const host = decodeURIComponent(params.get("host") || "")
+    const card = decodeURIComponent(params.get("card") ||"");
     return (
         <div className="editor-container">
             <div className="Card-container">
