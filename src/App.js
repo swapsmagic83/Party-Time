@@ -1,15 +1,17 @@
 import logo from './logo.svg';
-import { BrowserRouter  } from 'react-router-dom';
-import NavBar from './NavBar';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
+import NavBar from './NavBar';
+
 
 
 function App() {
-  
+  // const location = useLocation()
   return (
     <div className="App">
       <BrowserRouter>
-      <NavBar />   
+      <NavBar />
       {/* <Home /> */}
       </BrowserRouter>
       
