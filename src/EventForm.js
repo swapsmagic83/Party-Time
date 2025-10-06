@@ -13,6 +13,7 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
         <div>
             <div className="Card-form-container" >
                 <form className="Form" onSubmit={handleDone}>
+                    <div className="Form-input">
                     <label>Heading</label>
                     <input
                     type="text"
@@ -27,7 +28,9 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
                     value={cardData.headingColor}
                     onChange={handleChange}></input>
                     <br></br>
+                    </div>
 
+                    <div className="Form-input">
                     <label>Info</label>
                     <input
                     type="text"
@@ -42,7 +45,9 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
                     value={cardData.infoColor}
                     onChange={handleChange}></input>
                     <br></br>
+                    </div>
 
+                    <div className="Form-input">
                     <label>Date Time </label>
                     <input
                     type="text"
@@ -51,7 +56,6 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
                     onChange={handleChange}
                     required></input>
                     <br></br>
-
                     <label>Date Color</label>
                     <input
                     type="color"
@@ -59,8 +63,9 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
                     value={cardData.dateColor}
                     onChange={handleChange}></input>
                     <br></br>
+                    </div>
 
-
+                    <div className="Form-input">
                     <label>Address:</label>
                     <input
                     type="text"
@@ -76,6 +81,8 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
                     value={cardData.addressColor}
                     onChange={handleChange}></input>
                     <br></br>
+                    </div>
+
                     <button className="Button">Done</button>
                 </form>
             </div>

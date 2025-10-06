@@ -68,9 +68,9 @@ const Card = ({selectedCard}) =>{
                 />)}
 
             {stage === "preview" && (
-                  <div className>
-                    <button onClick={() => setStage("editForm")}>Edit</button>
-                    <button onClick={() => setStage("hostForm")}>Add Host Info</button>
+                  <div >
+                    <button className="Preview-btn"  onClick={() => setStage("editForm")}>Edit Event Info</button>
+                    <button className="Preview-btn" onClick={() => setStage("hostForm")}>Add Host Info</button>
                  </div>
                 )}
 

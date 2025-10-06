@@ -16,7 +16,8 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
     return (
         <>
         <div className="Card-form-container">
-            <form className="Card-Edit-form" onSubmit={handleSubmit}>
+            <form className="Form" onSubmit={handleSubmit}>
+                <div className="Form-input">
                 <label >Host Name</label>
                 <input 
                 
@@ -28,8 +29,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 >
                 </input>
                 <br></br>
+                </div>
 
-
+                <div className="Form-input">
                 <label>Host Phone Number:</label>
                 <input 
                 type="text"
@@ -40,8 +42,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 >
                 </input>
                 <br></br>
+                </div>
 
-
+                <div className="Form-input">
                 <label>Host Email</label>
                 <input 
                 type="email"
@@ -52,8 +55,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 >
                 </input>
                 <br></br>
+                </div>
 
-
+                <div className="Form-input">
                 <label>Host Address</label>
                 <input 
                 type="text"
@@ -63,10 +67,12 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 >
                 </input>
                 <br></br>
+                </div>
 
-
-                <button type="button" onClick={handleBack}>Previous</button>
-                <button type="submit">Next</button>
+                {/* <div className="Form-input"> */}
+                <button className="Button" type="button" onClick={handleBack}>Previous</button>
+                <button className="Button" type="submit">Next</button>
+                {/* </div> */}
             </form>
     
         </div>

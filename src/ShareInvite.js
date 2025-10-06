@@ -41,8 +41,8 @@ console.log('link',eventUrl)
  return(
     <div>
     
-    <h3>Share your invite</h3>
-    <div>
+    <h1>Share your invite</h1>
+    <div className="Form">
     <input
     type="email"
     value={newEmail}
@@ -54,7 +54,7 @@ console.log('link',eventUrl)
     
     {guestEmails.length > 0 && (
         <div>
-            <h6>List of guests invited</h6>
+            <h3>List of guests invited</h3>
             <ul>
                 {guestEmails.map((email)=>(
                     <li> {email}</li>
@@ -62,7 +62,8 @@ console.log('link',eventUrl)
             </ul>
         </div>
     )}
-    <button onClick={sendInvites}>Send</button>
+    {guestEmails.length >0 &&
+    <button onClick={sendInvites}>Send</button>}
     </div>
  )
 }
