@@ -1,8 +1,9 @@
 import React, { useState} from "react";
 import './Card.css'
 import HostDetails from "./HostDetails";
-import ShareInvite from "./ShareInvite";
+import ShareEmailInvite from "./ShareEmailInvite";
 import EventForm from "./EventForm";
+import ShareWhatappInvite from "./ShareWhatsappInvite";
 
 const Card = ({selectedCard}) =>{
    
@@ -85,12 +86,20 @@ const Card = ({selectedCard}) =>{
 
             
             {stage === 'guest' && hostDetails &&
-                (<ShareInvite 
+                (<div>
+                <ShareEmailInvite 
                 hostName={hostDetails.hostName}
                 hostPhone={hostDetails.hostPhone}
                 hostEmail={hostDetails.hostEmail}
                 hostAddress={hostDetails.hostAddress}
-                eventUrl={generateEventLink()}/> )}
+                eventUrl={generateEventLink()}/>
+                <ShareWhatappInvite
+                hostName={hostDetails.hostName}
+                hostPhone={hostDetails.hostPhone}
+                hostEmail={hostDetails.hostEmail}
+                hostAddress={hostDetails.hostAddress}
+                eventUrl={generateEventLink()} />
+                </div> )}
         </div>
     )
 }

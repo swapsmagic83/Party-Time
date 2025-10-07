@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ShareInvite from "./ShareInvite";
+import ShareInvite from "./ShareEmailInvite";
 
 const HostDetails = ({handleBack, onHostSubmit}) =>{
     const [hostName,setHostName] = useState('')

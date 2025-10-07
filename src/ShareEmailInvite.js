@@ -1,7 +1,7 @@
 import React,{useState} from "react";  
 import emailjs from "@emailjs/browser"
 
-const ShareInvite = ({hostName, eventUrl}) =>{
+const ShareEmailInvite = ({hostName, eventUrl}) =>{
     const [guestEmails,setGuestEmails] = useState([])
     const [newEmail,setNewEmail] = useState('')
     console.log(guestEmails)
@@ -12,6 +12,7 @@ const ShareInvite = ({hostName, eventUrl}) =>{
         }
     }
 console.log('link',eventUrl)
+    // send via email
     const sendInvites = (e) =>{
         e.preventDefault()
         if(guestEmails.length > 0){
@@ -64,7 +65,8 @@ console.log('link',eventUrl)
     )}
     {guestEmails.length >0 &&
     <button onClick={sendInvites}>Send</button>}
+    
     </div>
  )
 }
-export default ShareInvite;
+export default ShareEmailInvite;
