@@ -34,9 +34,8 @@ const Card = ({selectedCard}) =>{
              addressColor: encodeURIComponent(cardData.addressColor),   
              card:encodeURIComponent(selectedCard), 
              host: encodeURIComponent(hostDetails.hostName)}
-        const queryString = Object.keys(eventData)
-             .map(key => `${key}=${eventData[key]}`)
-             .join('&')
+        const queryString = new URLSearchParams(eventData).toString()
+             
         // const queryString = new URLSearchParams(eventData).toString()
         return `https://party-time-react.netlify.app/view?${queryString}`
     }

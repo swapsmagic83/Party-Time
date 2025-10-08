@@ -18,7 +18,9 @@ const ResultCard = () =>{
     return (
         <div className="editor-container">
             <div className="Card-container">
-                {card && <img className="Card-image" src={card} alt="Invitation Card" />}
+                {card && <img className="Card-image" 
+                        src={card} 
+                        alt="Invitation Card" />}
                 <div className="heading-overlay-text">
                 <h3 style={{color: headingColor}}>{heading}</h3>    
                 </div>

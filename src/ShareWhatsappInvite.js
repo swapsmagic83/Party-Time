@@ -22,6 +22,9 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
 
         return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
     }
+    // const sendAllInvites = async () =>{
+
+    // }
     return (
         <div>
             <h1>Share invite via WhatsApp</h1>
@@ -61,7 +64,7 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
                 </ul>
                 <button onClick={()=>{
                     guestNumbers.forEach((num)=>{
-                        window.open(createWhatsappLink(num),"_blank")
+                        navigator.share(createWhatsappLink(num),"_blank")
                     })
                 }}>Send to all</button>
                 </div>}
