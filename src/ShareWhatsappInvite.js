@@ -1,14 +1,14 @@
 import React,{useState} from "react";
 import "./Card.css"
 
-const ShareWhatappInvite = ({hostName,eventUrl})=>{
+const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
     const [guestNumbers,setGuestNumbers] = useState([])
     const [newNumber, setNewNumber] = useState('')
     const [countryCode,setCountryCode] = useState('+1')
 
     const handleAddNumber = () =>{
         if(newNumber){
-            const fullNumber = `${countryCode}${newNumber}`
+            const fullNumber = `${countryCode}${newNumber.trim()}`
             if(!guestNumbers.includes(fullNumber)){
                 setGuestNumbers([...guestNumbers,fullNumber])
                 setNewNumber('')
@@ -59,8 +59,13 @@ const ShareWhatappInvite = ({hostName,eventUrl})=>{
                             Send Invite</a></li>
                     ))}
                 </ul>
+                <button onClick={()=>{
+                    guestNumbers.forEach((num)=>{
+                        window.open(createWhatsappLink(num),"_blank")
+                    })
+                }}>Send to all</button>
                 </div>}
         </div>
     )
 }
-export default ShareWhatappInvite;
+export default ShareWhatsAppInvite;

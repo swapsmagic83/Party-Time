@@ -3,7 +3,7 @@ import './Card.css'
 import HostDetails from "./HostDetails";
 import ShareEmailInvite from "./ShareEmailInvite";
 import EventForm from "./EventForm";
-import ShareWhatappInvite from "./ShareWhatsappInvite";
+import ShareWhatappInvite from "./ShareWhatsAppInvite";
 
 const Card = ({selectedCard}) =>{
    
