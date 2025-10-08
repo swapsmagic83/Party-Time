@@ -3,7 +3,7 @@ import './Card.css'
 import HostDetails from "./HostDetails";
 import ShareEmailInvite from "./ShareEmailInvite";
 import EventForm from "./EventForm";
-import ShareWhatappInvite from "./ShareWhatsAppInvite";
+import ShareWhatsAppInvite from "./ShareWhatsAppInvite";
 
 const Card = ({selectedCard}) =>{
    
@@ -93,7 +93,7 @@ const Card = ({selectedCard}) =>{
                 hostEmail={hostDetails.hostEmail}
                 hostAddress={hostDetails.hostAddress}
                 eventUrl={generateEventLink()}/>
-                <ShareWhatappInvite
+                <ShareWhatsAppInvite
                 hostName={hostDetails.hostName}
                 hostPhone={hostDetails.hostPhone}
                 hostEmail={hostDetails.hostEmail}
