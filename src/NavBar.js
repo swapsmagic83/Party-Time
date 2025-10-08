@@ -15,7 +15,7 @@ const NavBar = () =>{
                     <NavLink className="NavBar-NavLink" to='/halloween'>Halloween</NavLink>
 
                 </Navbar>}
-                <Home />
+                
         </>
     )
 }

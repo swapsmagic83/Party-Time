@@ -69,10 +69,10 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 <br></br>
                 </div>
 
-                {/* <div className="Form-input"> */}
+                
                 <button className="Button" type="button" onClick={handleBack}>Previous</button>
                 <button className="Button" type="submit">Next</button>
-                {/* </div> */}
+              
             </form>
     
         </div>

@@ -12,8 +12,7 @@ const Home = () =>{
     
     return (
         <>
-        {/* {location.pathname !=="/view" && <NavBar />}  */}
-        {/* <NavBar/> */}
+        
         <Routes>
           
           <Route path="/" element={<h1 className="Card-h1">Invite people to the event!!!</h1>}></Route>

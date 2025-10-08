@@ -7,12 +7,11 @@ import NavBar from './NavBar';
 
 
 function App() {
-  // const location = useLocation()
   return (
     <div className="App">
       <BrowserRouter>
       <NavBar />
-      {/* <Home /> */}
+      <Home />
       </BrowserRouter>
       
     </div>

@@ -57,8 +57,8 @@ console.log('link',eventUrl)
         <div>
             <h3>List of guests invited</h3>
             <ul>
-                {guestEmails.map((email)=>(
-                    <li> {email}</li>
+                {guestEmails.map((email,i)=>(
+                    <li key={i}> {email}</li>
                 ))}
             </ul>
         </div>
