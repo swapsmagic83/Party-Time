@@ -17,8 +17,9 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
         }
         
     }
+    const encodedEventUrl = encodeURIComponent(eventUrl);
     const message = `Hey ${hostName} has invited you to an event!
-                     Check the invitation here: ${encodeURIComponent(eventUrl)}`
+                     Check the invitation here: ${eventUrl}`
     const createWhatsappLink  = (number) =>{
 
         return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
