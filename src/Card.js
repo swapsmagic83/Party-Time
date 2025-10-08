@@ -37,7 +37,8 @@ const Card = ({selectedCard}) =>{
         const queryString = new URLSearchParams(eventData).toString()
              
         // const queryString = new URLSearchParams(eventData).toString()
-        return `https://party-time-react.netlify.app/view?${queryString}`
+        const fullUrl = `https://party-time-react.netlify.app/view?${queryString}`
+        return fullUrl
     }
 
     return (

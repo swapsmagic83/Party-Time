@@ -7,6 +7,7 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
     const [countryCode,setCountryCode] = useState('+1')
 
     const handleAddNumber = () =>{
+
         if(newNumber){
             const fullNumber = `${countryCode}${newNumber.trim()}`
             if(!guestNumbers.includes(fullNumber)){
@@ -17,7 +18,7 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
         
     }
     const message = `Hey ${hostName} has invited you to an event!
-                     Check the invitation here: ${eventUrl}`
+                     Check the invitation here: ${encodeURIComponent(eventUrl)}`
     const createWhatsappLink  = (number) =>{
 
         return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
