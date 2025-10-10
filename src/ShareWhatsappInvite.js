@@ -7,7 +7,6 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
     const [countryCode,setCountryCode] = useState('+1')
 
     const handleAddNumber = () =>{
-
         if(newNumber){
             const fullNumber = `${countryCode}${newNumber.trim()}`
             if(!guestNumbers.includes(fullNumber)){
@@ -17,15 +16,13 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
         }
         
     }
-    const encodedEventUrl = encodeURIComponent(eventUrl);
-    const message = `Hey ${hostName} has invited you to an event!
-                     Check the invitation here: ${eventUrl}`
+    const message = `Hey ${hostName} has invited you to an event!%0ACheck the invitation here: ${eventUrl}`
+    // const message = `Hey ${hostName} has invited you to an event! Check the invitation here: ${eventUrl}`
     const createWhatsappLink  = (number) =>{
-
-        return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+        return `https://wa.me/${number}?text=${message}`
     }
     // const sendAllInvites = async () =>{
-
+        
     // }
     return (
         <div>
@@ -54,7 +51,7 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
             <div>
                 <ul>
                     {guestNumbers.map(num =>(
-                        <li>{num}
+                        <li>{num}{" "}
                         <a
                         href={createWhatsappLink(num)}
                         target="_blank"
@@ -66,7 +63,8 @@ const ShareWhatsAppInvite = ({hostName,eventUrl})=>{
                 </ul>
                 <button onClick={()=>{
                     guestNumbers.forEach((num)=>{
-                        navigator.share(createWhatsappLink(num),"_blank")
+                        const link = createWhatsappLink(num)
+                        window.open(link,"_blank")
                     })
                 }}>Send to all</button>
                 </div>}
