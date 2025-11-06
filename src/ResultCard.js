@@ -1,37 +1,63 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React,{useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 import './Card.css'
+import EventApi from "./api";
 
 const ResultCard = () =>{
-    const {search} = useLocation()
-    const params = new URLSearchParams(search)
-    const heading = decodeURIComponent(params.get("heading") || "")
-    const headingColor = decodeURIComponent(params.get("headingColor") || "#000000")
-    const date = decodeURIComponent(params.get("date") || "")
-    const dateColor = decodeURIComponent(params.get("dateColor") || "#000000")
-    const info = decodeURIComponent(params.get("info") || "")
-    const infoColor = decodeURIComponent(params.get("infoColor") || "#000000")
-    const address = decodeURIComponent(params.get("address") || "")
-    const addressColor = decodeURIComponent(params.get("addressColor") || "#000000")
-    const host = decodeURIComponent(params.get("host") || "")
-    const card = decodeURIComponent(params.get("card") ||"");
+    const {inviteId} = useParams()
+    const [event,setEvent] = useState(null)
+
+    useEffect(()=>{
+        const getEvent = async () =>{
+            try{
+                const res = await EventApi.getEventLinkByInviteId(`events/view/${inviteId}`)
+                setEvent(res.event)
+            }
+            catch(err){
+                console.error("Error finding event",err)
+            }
+        }
+        getEvent()
+    },[inviteId])
+    console.log('resultcard',event)
+    if (!event) {
+        return <p>Loading event details...</p>;
+      }
     return (
         <div className="editor-container">
+           
             <div className="Card-container">
-                {card && <img className="Card-image" 
-                        src={card} 
+                {event.img_url && <img className="Card-image" 
+                        src={event.img_url} 
                         alt="Invitation Card" />}
                 <div className="heading-overlay-text">
-                <h3 style={{color: headingColor}}>{heading}</h3>    
+                <h3 style={{color: event.heading_color}}>{event.heading}</h3>    
                 </div>
                 <div className="overlay-text">
    
-                      <h4 style={{color:infoColor}}>{info}</h4>
-                    <h4 style={{color:dateColor}}>{date}</h4>
-                   <h4 style={{color:addressColor}}>{address}</h4></div>
+                      <h4 style={{color:event.info_color}}>{event.info}</h4>
+                    <h4 style={{color:event.date_time_color}}>{event.date_time}</h4>
+                   <h4 style={{color:event.address_color}}>{event.address}</h4></div>
             </div>
-            <p> You Are Invited By: {host}</p>
-        </div>
+            <div>
+                <div>
+                    <h4>You are invited by: {event.name}</h4>
+                </div>
+                <div>
+                    <h2>{event.info}</h2>
+                </div>
+                <div>
+                    <p>
+                        <b>Date:</b> {event.date_time}
+                    </p>
+                </div>
+                <div>
+                <p>
+                  <b>Location:</b> {event.address}
+                </p>
+                </div>
+            </div>
+        </div> 
     
     )
 }

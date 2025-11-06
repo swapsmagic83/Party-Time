@@ -1,17 +1,18 @@
 import React, {useState} from "react";
 import ShareInvite from "./ShareEmailInvite";
 
-const HostDetails = ({handleBack, onHostSubmit}) =>{
-    const [hostName,setHostName] = useState('')
-    const [hostPhone,setHostPhone] = useState('')
-    const [hostEmail,setHostEmail] =useState('')
-    const [hostAddress, setHostAddress] =useState('')
-
+const HostDetails = ({handleBack, onHostSubmit,hostDetails,setHostDetails}) =>{
+    
+    const handleChange = (e) =>{
+        const {name,value} = e.target;
+        setHostDetails((prev)=>({
+            ...prev,
+            [name]:value
+        }))
+    }
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(hostName)
-        
-        onHostSubmit({hostName,hostPhone,hostEmail,hostAddress})
+        onHostSubmit(hostDetails)
     }
     return (
         <>
@@ -23,9 +24,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 
                 type="text"
                 name="hostName"
-                value={hostName}
+                value={hostDetails.hostName}
                 required
-                onChange={(e)=>setHostName(e.target.value)}
+                onChange={handleChange}
                 >
                 </input>
                 <br></br>
@@ -36,9 +37,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 <input 
                 type="text"
                 name="hostPhone"
-                value={hostPhone}
+                value={hostDetails.hostPhone}
                 required
-                onChange={(e)=>setHostPhone(e.target.value)}
+                onChange={handleChange}
                 >
                 </input>
                 <br></br>
@@ -49,9 +50,9 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 <input 
                 type="email"
                 name="hostEmail"
-                value={hostEmail}
+                value={hostDetails.hostEmail}
                 required
-                onChange={(e)=>setHostEmail(e.target.value)}
+                onChange={handleChange}
                 >
                 </input>
                 <br></br>
@@ -62,8 +63,8 @@ const HostDetails = ({handleBack, onHostSubmit}) =>{
                 <input 
                 type="text"
                 name="hostAddress"
-                value={hostAddress}
-                onChange={(e)=>setHostAddress(e.target.value)}
+                value={hostDetails.hostAddress}
+                onChange={handleChange}
                 >
                 </input>
                 <br></br>

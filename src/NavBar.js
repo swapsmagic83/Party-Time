@@ -4,17 +4,18 @@ import { Navbar} from "reactstrap";
 import Home from "./Home";
 const NavBar = () =>{
     const location = useLocation()
+    const hideNavBar = location.pathname.startsWith("/events/view")
     return (
         
         <>
-        {location.pathname !=="/view"&&
-        <Navbar className="Navbar-container">
+        {!hideNavBar&&
+        (<Navbar className="Navbar-container">
                     <NavLink className="NavBar-NavLink" to='/'>Home</NavLink>
                     <NavLink className="NavBar-NavLink" to='/birthday'> Birthday</NavLink>
                     <NavLink className="NavBar-NavLink" to='/graduation'>Graduation</NavLink>
                     <NavLink className="NavBar-NavLink" to='/halloween'>Halloween</NavLink>
 
-                </Navbar>}
+                </Navbar>)}
                 
         </>
     )
