@@ -7,11 +7,7 @@ import EventForm from "./EventForm";
 import EventApi from "./api";
 
 const Card = ({selectedCard,setInviteId,inviteId}) =>{
-//    console.log('selectedCard in card.js',selectedCard)
-
-console.log('in card.js inviteId',inviteId)
-console.log('entire localstorage',localStorage)
-
+// console.log('local',localStorage)
     const [cardData,setCardData] = useState({
         heading:'',
         headingColor:'#000000',
@@ -35,37 +31,28 @@ console.log('entire localstorage',localStorage)
         if(saveStage) {
             return (JSON.parse(saveStage))};
         return 'editForm' ;
-        // console.log('stage ',saveStage)
     });
     
     console.log('stage outside ',stage)
     console.log('outside host',hostDetails)
     console.log('carddata',cardData)
+
     //restore saved data
     useEffect(()=>{
         const saveForm = localStorage.getItem('eventCardData');
-        console.log('localstorage getting carddata', saveForm)
         const saveHost = localStorage.getItem('hostDetails');
-        
-
         if(saveForm) setCardData(JSON.parse(saveForm));
-        console.log('resoring cardata',JSON.parse(saveForm))
         if(saveHost && saveHost != 'null') setHostDetails(JSON.parse(saveHost));
-       
-        
-        console.log('savehost in useeffect',saveHost)
     },[]);
 
-    
     useEffect(()=>{
         if(cardData.date != ''){
         localStorage.setItem('eventCardData',JSON.stringify(cardData));
-        console.log('localstorage setting carddata', cardData)}
+        }
     },[cardData]);
     
     useEffect(() =>{
         if(hostDetails && hostDetails.hostName !== '') localStorage.setItem('hostDetails', JSON.stringify(hostDetails));
-        console.log('seeting hostdetails',hostDetails)
     },[hostDetails]);
 
     useEffect(() =>{
@@ -76,6 +63,7 @@ console.log('entire localstorage',localStorage)
         const savedInviteId = localStorage.getItem('inviteId');
         if (savedInviteId) setInviteId(savedInviteId)
     },[])
+
     //async function saving event info and host details into database
     const saveEventToDatabase = async (host) =>{
         if(!host || !selectedCard || !selectedCard.id) return;
@@ -100,15 +88,9 @@ console.log('entire localstorage',localStorage)
         
        try{
         const result = await EventApi.saveEventAndHost(eventData,hostData);
-        console.log('this is result in function saveeventtodatabase',result)
+        
         setInviteId(result.invite_id);
         localStorage.setItem('inviteId',result.invite_id)
-
-        //clear localStorage after saving into database
-        // localStorage.removeItem('eventCardData');
-        // localStorage.removeItem('hostDetails');
-        // localStorage.removeItem('stage');
-
         return result;
        }
        catch(err){
@@ -118,11 +100,6 @@ console.log('entire localstorage',localStorage)
 
     const generateEventLink = () =>{
         const fullLink = `http://localhost:3000/events/view/${inviteId}`;
-        console.log('full link in generateEventLink', fullLink)  
-        // localStorage.removeItem('eventCardData');
-        // localStorage.removeItem('hostDetails');
-        // localStorage.removeItem('stage');
-        // localStorage.removeItem('selectedCard')
         return fullLink;
         };
     
@@ -148,7 +125,7 @@ console.log('entire localstorage',localStorage)
 
             {selectedCard && stage === 'editForm' &&
                 (<EventForm 
-                // selectedCard={selectedCard}
+        
                 cardData={cardData}
                 setCardData={setCardData}
                 handleDone={()=>setStage('preview')}

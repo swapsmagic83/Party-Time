@@ -11,7 +11,10 @@ const ResultCard = () =>{
         const getEvent = async () =>{
             try{
                 const res = await EventApi.getEventLinkByInviteId(`events/view/${inviteId}`)
-                setEvent(res.event)
+                if(res && res.event){
+                    setEvent(res.event)
+                }
+                
             }
             catch(err){
                 console.error("Error finding event",err)

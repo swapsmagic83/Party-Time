@@ -1,17 +1,33 @@
-import React,{useState} from "react";  
+import React,{useState,useEffect} from "react";  
 import emailjs from "@emailjs/browser"
 
 const ShareEmailInvite = ({hostName, eventUrl,setStage}) =>{
-    const [guestEmails,setGuestEmails] = useState([])
+    const [guestEmails,setGuestEmails] = useState(() =>{
+        const saved = localStorage.getItem('guestEmails')
+        if(saved){
+            return JSON.parse(saved)
+        }else{
+           return []
+        }
+    })
     const [newEmail,setNewEmail] = useState('')
     const [isSent,setIsSent] = useState(false)
     
-    console.log(guestEmails)
+    // console.log(guestEmails)
+    useEffect(()=>{
+        localStorage.setItem('guestEmails',JSON.stringify(guestEmails))
+    },[guestEmails])
     const handleAddEmail = () =>{
         if(newEmail && !guestEmails.includes(newEmail)){
             setGuestEmails([...guestEmails, newEmail])
             setNewEmail('')
         }
+    }
+
+    const removeEmail = (id) =>{
+        const updated = [...guestEmails]
+        updated.splice(id,1)
+        setGuestEmails(updated)
     }
 console.log('link',eventUrl)
     // send via email
@@ -37,22 +53,30 @@ console.log('link',eventUrl)
             console.log("✅ All invites sent successfully");
             setIsSent(true);
         
-            // Now safe to clear localStorage
+            //  clear localStorage
             localStorage.removeItem('eventCardData');
             localStorage.removeItem('hostDetails');
             localStorage.removeItem('stage');
             localStorage.removeItem('inviteId');
             localStorage.removeItem('selectedCard');
+            localStorage.removeItem('guestEmails');
         }
         catch(err){
             console.error('Error sending emails',err);
         }
+            localStorage.removeItem('eventCardData');
+            localStorage.removeItem('hostDetails');
+            localStorage.removeItem('stage');
+            localStorage.removeItem('inviteId');
+            localStorage.removeItem('selectedCard');
+            localStorage.removeItem('guestEmails');
     }
     
  return(
     <div>
     
     <h1>Share your invite</h1>
+    <button onClick={()=>setStage('hostForm')}>Edit Invite</button>
     <div className="Form">
     <input
     type="email"
@@ -62,7 +86,8 @@ console.log('link',eventUrl)
     ></input>
     <button onClick={handleAddEmail}>Add </button>
     </div>
-    <button onClick={()=>setStage('hostForm')}>Edit Invite</button>
+   
+    
     {guestEmails.length > 0 && (
         <div>
             <h3>List of guests invited</h3>
@@ -73,18 +98,13 @@ console.log('link',eventUrl)
                    
                         <li key={i}> 
                         <span>{email}</span>
-                        <button>Edit</button>
-                        <button>Remove</button>
-                        </li>
-                        
-                   
-                    
+                        {/* <button>Edit</button> */}
+                        <button onClick={()=>removeEmail(i)}>Remove</button>
+                        </li>    
                 ))}
             </ul>
         </div>
     )}
-    {/* {guestEmails.length >0 &&
-    <button onClick={sendInvites}>Send To All</button>} */}
     
     </div>
  )

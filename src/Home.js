@@ -6,34 +6,33 @@ import GraduationCardsList from "./GraduationCardsList";
 import Card from './Card';
 import HalloweenCardsList from "./HalloweenCardsList";
 import ResultCard from "./ResultCard";
+import HostPage from "./HostPage";
 const Home = () =>{
     const location = useLocation()
     const [selectedCard, setSelectedCard] = useState('')
     const [inviteId,setInviteId] = useState(null)
-    // localStorage.removeItem('eventCardData');
-    //     localStorage.removeItem('hostDetails');
-    //     localStorage.removeItem('stage');
-    //     localStorage.removeItem('selectedCard')
-  //saving selectedCard in localStorage
+    
     useEffect(() =>{
       const card = localStorage.getItem('selectedCard')
       if(card){
         setSelectedCard(JSON.parse(card))
-        console.log('in home.js',card)
       }
     },[])
     return (
         <>
-        
+        {/* <HostPage /> */}
         <Routes>
           
-          <Route path="/" element={<h1 className="Card-h1">Invite people to the event!!!</h1>}></Route>
+          <Route path="/" element={
+            <div>
+              <h1 className="Card-h1">Create new event!!!</h1>
+              </div>}> </Route>
           <Route path='/birthday' element={<BirthdayCardsList setSelectedCard={setSelectedCard} />}></Route>
           <Route path='/edit' element={<Card selectedCard={selectedCard} setInviteId={setInviteId} inviteId={inviteId}/>}></Route>
           <Route path='/graduation' element={<GraduationCardsList setSelectedCard={setSelectedCard}/>}></Route>
           <Route path='/halloween' element={<HalloweenCardsList setSelectedCard={setSelectedCard}/>}></Route>
           <Route path="/events/view/:inviteId" element={<ResultCard />}></Route>
-          
+          {/* <Route path="/events/:email" element={<HostPage/>}></Route> */}
         </Routes>
       
         

@@ -40,10 +40,15 @@ class EventApi {
         const res = await this.request(`${email}`)
         console.log(res)
     }
-    static async getEventbyId(event_id){
-        const res = await this.request(`events/id/${event_id}`)
-        console.log('this is in api get event by id',res)
-        return res.event
+    static async getEventbyHostEvent(event_id){
+        const res = await this.request(`${event_id}`)
+        return res
     }
+    static async findEventsByEmail(email){
+        const res = await this.request(`${email}`)
+        console.log('events by email in api.js',res)
+        return res
+    }
+    
 }
 export default EventApi;
