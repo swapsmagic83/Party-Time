@@ -1,35 +1,34 @@
 import React,{useState,useEffect} from "react";  
-import emailjs from "@emailjs/browser"
+import emailjs from "@emailjs/browser";
 
 const ShareEmailInvite = ({hostName, eventUrl,setStage}) =>{
     const [guestEmails,setGuestEmails] = useState(() =>{
-        const saved = localStorage.getItem('guestEmails')
+        const saved = localStorage.getItem('guestEmails');
         if(saved){
-            return JSON.parse(saved)
+            return JSON.parse(saved);
         }else{
-           return []
+           return [];
         }
-    })
-    const [newEmail,setNewEmail] = useState('')
-    const [isSent,setIsSent] = useState(false)
+    });
+    const [newEmail,setNewEmail] = useState('');
+    const [isSent,setIsSent] = useState(false);
     
-    // console.log(guestEmails)
     useEffect(()=>{
         localStorage.setItem('guestEmails',JSON.stringify(guestEmails))
-    },[guestEmails])
+    },[guestEmails]);
     const handleAddEmail = () =>{
         if(newEmail && !guestEmails.includes(newEmail)){
-            setGuestEmails([...guestEmails, newEmail])
-            setNewEmail('')
+            setGuestEmails([...guestEmails, newEmail]);
+            setNewEmail('');
         }
-    }
+    };
 
     const removeEmail = (id) =>{
-        const updated = [...guestEmails]
-        updated.splice(id,1)
-        setGuestEmails(updated)
+        const updated = [...guestEmails];
+        updated.splice(id,1);
+        setGuestEmails(updated);
     }
-console.log('link',eventUrl)
+
     // send via email
     const sendInvites = async (e) =>{
         e.preventDefault();
@@ -41,15 +40,15 @@ console.log('link',eventUrl)
                         to_email: email,
                         host_name:hostName,
                         eventUrl:eventUrl
-                    }
+                    };
                     return emailjs.send(
                     "service_rratg8g",
                     "template_2ho7mvb",
                     templateParams,
                     "QNkPqoBDCmMOzz3R9"
-                )
+                );
                 })
-            )
+            );
             console.log("✅ All invites sent successfully");
             setIsSent(true);
         

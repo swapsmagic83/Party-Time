@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import './Card.css'
+import './Card.css';
 import { useNavigate } from "react-router-dom";
 import EventApi from "./api";
 
@@ -12,16 +12,16 @@ const BirthdayCardsList = ({setSelectedCard}) =>{
         
         useEffect(() =>{
             async function getCards() {
-                    const result = await EventApi.getCardsByOccasion('birthday')
-                    setBirthdayCards(result)
+                    const result = await EventApi.getCardsByOccasion('birthday');
+                    setBirthdayCards(result);
             }
-            getCards()
+            getCards();
         },[]);
     
     const handleClick = (card) =>{
-       setSelectedCard(card)
-       localStorage.setItem('selectedCard',JSON.stringify(card))
-       navigate('/edit', {state:{card}})
+       setSelectedCard(card);
+       localStorage.setItem('selectedCard',JSON.stringify(card));
+       navigate('/edit', {state:{card}});
     };
     return (
         <div>

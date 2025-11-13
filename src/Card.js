@@ -33,9 +33,6 @@ const Card = ({selectedCard,setInviteId,inviteId}) =>{
         return 'editForm' ;
     });
     
-    console.log('stage outside ',stage)
-    console.log('outside host',hostDetails)
-    console.log('carddata',cardData)
 
     //restore saved data
     useEffect(()=>{
@@ -45,6 +42,7 @@ const Card = ({selectedCard,setInviteId,inviteId}) =>{
         if(saveHost && saveHost != 'null') setHostDetails(JSON.parse(saveHost));
     },[]);
 
+    //saving data
     useEffect(()=>{
         if(cardData.date != ''){
         localStorage.setItem('eventCardData',JSON.stringify(cardData));
@@ -98,8 +96,9 @@ const Card = ({selectedCard,setInviteId,inviteId}) =>{
        }
     };
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
     const generateEventLink = () =>{
-        const fullLink = `http://localhost:3000/events/view/${inviteId}`;
+        const fullLink = `${BASE_URL}/events/view/${inviteId}`;
         return fullLink;
         };
     

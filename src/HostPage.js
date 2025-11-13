@@ -3,18 +3,17 @@ import EventApi from "./api";
 
 
 const HostPage = () =>{
-const [email,setEmail] = useState('')
-const [events,setEvents] = useState([])
-console.log('events in hostpage', events)
+const [email,setEmail] = useState('');
+const [events,setEvents] = useState([]);
+console.log('events in hostpage', events);
 const handleFindEvents = async (e) =>{
-    e.preventDefault()
+    e.preventDefault();
     try{
-        const result = await EventApi.findEventsByEmail(`events/${email}`)
-        console.log('result in hostpage',result)
-        setEvents(result.events)
+        const result = await EventApi.findEventsByEmail(`events/${email}`);
+        setEvents(result.events);
     }
     catch(err){
-        console.error('error finding events',err)
+        console.error('error finding events',err);
     }
 }
 

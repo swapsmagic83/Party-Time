@@ -1,25 +1,25 @@
 import React, {useState, useEffect} from "react";
-import './Card.css'
+import './Card.css';
 import { useNavigate } from "react-router-dom";
 import EventApi from "./api";
 
 
 const GraduationCardsList = ({setSelectedCard}) =>{
-    const navigate = useNavigate()
-    const [graduationCards,setGraduationCards] = useState([])
+    const navigate = useNavigate();
+    const [graduationCards,setGraduationCards] = useState([]);
 
     useEffect(()=>{
         async function getCards() {
-            const result = await EventApi.getCardsByOccasion('graduation')
-            setGraduationCards(result)
+            const result = await EventApi.getCardsByOccasion('graduation');
+            setGraduationCards(result);
         }
         getCards()
     },[])
    
     const handleClick = (card) =>{
-        setSelectedCard(card)
-        localStorage.setItem('selectedCard',JSON.stringify(card))
-        navigate('/edit', {state:{card}})
+        setSelectedCard(card);
+        localStorage.setItem('selectedCard',JSON.stringify(card));
+        navigate('/edit', {state:{card}});
      }
     return (
         <>

@@ -1,28 +1,28 @@
 import React,{useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import './Card.css'
+import './Card.css';
 import EventApi from "./api";
 
 const ResultCard = () =>{
-    const {inviteId} = useParams()
-    const [event,setEvent] = useState(null)
+    const {inviteId} = useParams();
+    const [event,setEvent] = useState(null);
 
     useEffect(()=>{
         const getEvent = async () =>{
             try{
-                const res = await EventApi.getEventLinkByInviteId(`events/view/${inviteId}`)
+                const res = await EventApi.getEventLinkByInviteId(`events/view/${inviteId}`);
                 if(res && res.event){
-                    setEvent(res.event)
+                    setEvent(res.event);
                 }
                 
             }
             catch(err){
-                console.error("Error finding event",err)
+                console.error("Error finding event",err);
             }
-        }
-        getEvent()
-    },[inviteId])
-    console.log('resultcard',event)
+        };
+        getEvent();
+    },[inviteId]);
+    
     if (!event) {
         return <p>Loading event details...</p>;
       }

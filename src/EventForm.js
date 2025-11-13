@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './Card.css'
+import './Card.css';
 
 const EventForm = ({cardData,setCardData,handleDone}) =>{
     const handleChange = (e) =>{
@@ -7,8 +7,8 @@ const EventForm = ({cardData,setCardData,handleDone}) =>{
         setCardData((prev)=>({
             ...prev,
             [name]:value
-        }))
-    }
+        }));
+    };
     return (
         <div>
             <div className="Card-form-container" >
