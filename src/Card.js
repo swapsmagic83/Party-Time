@@ -96,9 +96,9 @@ const Card = ({selectedCard,setInviteId,inviteId}) =>{
        }
     };
 
-    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+    const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
     const generateEventLink = () =>{
-        const fullLink = `${BASE_URL}/events/view/${inviteId}`;
+        const fullLink = `${FRONTEND_URL}/events/view/${inviteId}`;
         return fullLink;
         };
     
