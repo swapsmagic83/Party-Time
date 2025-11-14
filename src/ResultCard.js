@@ -10,7 +10,7 @@ const ResultCard = () =>{
     useEffect(()=>{
         const getEvent = async () =>{
             try{
-                const res = await EventApi.getEventLinkByInviteId(`events/view/${inviteId}`);
+                const res = await EventApi.getEventLinkByInviteId(inviteId);
                 if(res && res.event){
                     setEvent(res.event);
                 }
