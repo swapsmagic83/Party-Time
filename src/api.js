@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-//|| "http://localhost:3001"
+// || "http://localhost:3001"
 
 class EventApi {
 
@@ -28,7 +28,7 @@ class EventApi {
         return res.cards;
     }
     static async getEventLinkByInviteId(invite_id){
-        const res = await this.request(`${invite_id}`);
+        const res = await this.request(`events/view/${invite_id}`);
         return res;
     }
     
